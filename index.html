@@ -19,22 +19,22 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <a class="navbar-brand" href="#">
-            <img src="./assets/images/cg_logo.png" width="50" height="50" class="d-inline-block align-top logo-img" alt="" loading="lazy"> <span class="logo-name">Canadian Gramavasis</span>
+            <img src="./assets/images/cg_logo.png" width="53" height="40" class="d-inline-block align-top logo-img" alt="" loading="lazy"> <span class="logo-name">Canadian Gramavasis</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse nav-items" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link ml-4" href="#" id="home">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-link ml-4" href="#" id="faq">FAQ</a>
-                <a class="nav-link ml-4 mr-4" href="#" id="about">ABOUT</a>
+                <a class="nav-link ml-4" href="#home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link ml-4" href="#faq-section" id="faq">FAQ</a>
+                <a class="nav-link ml-4 mr-4" href="#about-section" id="about">ABOUT</a>
             </div>
         </div>
     </nav>
     <!-- Nav Bar end -->
 
-    <div class="container-fluid bg-color root-container">
+    <div class="container-fluid bg-color root-container" id="home">
 
         <!-- Title Image and About us start -->
         <div class="container-fluid title-img">
@@ -46,8 +46,8 @@
         <div class="container about-us">
             <h3 class="about-title">WHO WE ARE</h3>
             <div class="shadow mb-2 bg-gray rounded about-box">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quae cumque ut aut adipisci repellendus, vero eos laudantium facilis necessitatibus qui magni, quasi fugiat ab itaque illo? Suscipit, fugiat? Eum! Lorem ipsum dolor sit, amet
-                    consectetur adipisicing elit. Nostrum, beatae ipsam, blanditiis quidem magni unde mollitia iusto asperiores ab libero, inventore praesentium deleniti totam ipsa cumque eum pariatur facilis veniam!</p>
+                <p>Canadian Gramavasis is a small organization build to help people who are planning to settle down or to purse their higher education in Canada. Our Youtube channel, consist of videos showcasing our life in Canada. We have uploaded many
+                    informative videos especially for students to make the right decisions before entering Canada. Stay tuned on our Youtube channel to watch all the videos</p>
             </div>
         </div>
         <!-- Title Image and About us ends -->
@@ -61,7 +61,7 @@
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             What are the benifits of studying in Canada?
                           </button>
                         </h5>
@@ -79,7 +79,7 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             What are some of the best courses in Georgian Collage?
                           </button>
                         </h5>
@@ -96,7 +96,7 @@
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             What is the minimum wage in Ontario?
                           </button>
                         </h5>
@@ -116,29 +116,37 @@
         <!-- FAQ Section ends -->
 
         <!-- Our Team Section start-->
-        <div class="container  bg-color team-section">
+        <div class="container bg-color team-section" id="about-section">
 
-            <div class="col-12">
-                <div class="text-center dp-div">
-                    <h3 class="team-title">OUR TEAM</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <h3 class="team-title">THE TEAM</h3>
+                    </div>
                 </div>
             </div>
 
-            <div class="xs-col-12 sm-col-12 md-col-6">
-                <div class="text-center dp-div">
-                    <img src="./assets/images/karthik_dp.png" class="round-img" alt="">
-                </div>
-                <div class="shadow bg-gray rounded about-box team-text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quae cumque ut aut adipisci repellendus, vero eos laudantium facilis necessitatibus qui magni, quasi fugiat ab itaque illo?</p>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-5 dp-div">
+                        <img src="./assets/images/karthik_dp.png" class="round-img" alt="">
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="shadow bg-gray rounded about-box team-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quae cumque ut aut adipisci repellendus, vero eos laudantium facilis necessitatibus qui magni, quasi fugiat ab itaque illo?</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="xs-col-12 sm-col-12 md-col-6">
-                <div class="md-col-5 xs-col-6 text-center dp-div">
-                    <img src="./assets/images/kevin_dp.png" class="round-img" alt="">
-                </div>
-                <div class="md-col-5 xs-col-6">
-                    <div class="shadow bg-gray rounded about-box team-text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quae cumque ut aut adipisci repellendus, vero eos laudantium facilis necessitatibus qui magni, quasi fugiat ab itaque illo?</p>
+            <div class="container-fluid xs-margin">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <div class="shadow bg-gray rounded about-box team-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quae cumque ut aut adipisci repellendus, vero eos laudantium facilis necessitatibus qui magni, quasi fugiat ab itaque illo?</p>
+                        </div>
+                    </div>
+                    <div class="col-5 dp-div" style="text-align: right;">
+                        <img src="./assets/images/kevin_dp.png" class="round-img" alt="">
                     </div>
                 </div>
             </div>
@@ -148,42 +156,43 @@
         <!-- Best Stories start-->
         <div class="row">
             <div class="col-12 text-center">
-                <h3 class="best-stories-title">BEST STORIES</h3>
+                <h3 class="best-stories-title">OUR BEST STORIES</h3>
             </div>
         </div>
-        <div class="container-fluid best-stories-images">
+        <div class="container best-stories-images">
             <div class="row justify-content-center">
 
-                <div class="col-xs-6 md-col-3 text-center">
+                <div class="col-xs-6 col-md-3 text-center">
                     <div class="row justify-content-center">
                         <img src="./assets/images/best_stories/01.png" alt="Part Time">
                     </div>
                     <div class="row justify-content-center best-stories-content">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum est, quaerat excepturi nulla culpa dolore. Hic quod corrupti ducimus alias totam itaque tempora earum quo, voluptatibus dolorum, quibusdam obcaecati fugit.</p>
+                        <p>This video conveys all the different ways of finding a part-time job in Canada. Also, it covers important topics like workload during part-time, shift timings, resume tips and other valuable information.</p>
                     </div>
                 </div>
-                <div class="col-xs-6 md-col-3 text-center">
+                <div class="col-xs-6 col-md-3 text-center">
                     <div class="row justify-content-center">
                         <img src="./assets/images/best_stories/02.png" alt="College Tour">
                     </div>
                     <div class="row justify-content-center best-stories-content">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum est, quaerat excepturi nulla culpa dolore. Hic quod corrupti ducimus alias totam itaque tempora earum quo, voluptatibus dolorum, quibusdam obcaecati fugit.</p>
+                        <p>Join us to explore the Georgian college, Barrie campus. We will walk you through the campus showing you all the infrastructures. If you are coming to Georgian college, we definitly recommend you to watch this one.</p>
                     </div>
                 </div>
-                <div class="col-xs-6 md-col-3 text-center">
+                <div class="col-xs-6 col-md-3 text-center">
                     <div class="row justify-content-center">
                         <img src="./assets/images/best_stories/03.png" alt="Student Visa">
                     </div>
                     <div class="row justify-content-center best-stories-content">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum est, quaerat excepturi nulla culpa dolore. Hic quod corrupti ducimus alias totam itaque tempora earum quo, voluptatibus dolorum, quibusdam obcaecati fugit.</p>
+                        <p>Want to settle down in Canada after studies? In this video, we will sharing our own experience of applying student visa, Moreover, we will tell you the different ways to get PR in Canada after completing your studies.
+                        </p>
                     </div>
                 </div>
-                <div class="col-xs-6 md-col-3 text-center">
+                <div class="col-xs-6 col-md-3 text-center">
                     <div class="row justify-content-center">
                         <img src="./assets/images/best_stories/04.png" alt="Winter in Canada">
                     </div>
                     <div class="row justify-content-center best-stories-content">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum est, quaerat excepturi nulla culpa dolore. Hic quod corrupti ducimus alias totam itaque tempora earum quo, voluptatibus dolorum, quibusdam obcaecati fugit.</p>
+                        <p>Winter! How hard is it? How do we cop with it?. In this video, we will tell you different tips to make the winter go easy. Also, we will show you all the mandatory winter gears required.</p>
                     </div>
                 </div>
 
@@ -192,48 +201,13 @@
         <!-- Best Stories end-->
     </div>
 
-
     <!-- Footer Start -->
-    <!-- Site footer -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <h6>About</h6>
-                    <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers
-                        build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
-                </div>
-
-                <div class="col-xs-6 col-md-3">
-                    <h6>Categories</h6>
-                    <ul class="footer-links">
-                        <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                        <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-                        <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                        <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-                        <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                        <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-xs-6 col-md-3">
-                    <h6>Quick Links</h6>
-                    <ul class="footer-links">
-                        <li><a href="http://scanfcode.com/about/">About Us</a></li>
-                        <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                        <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-                        <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-                        <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-        </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-6 col-xs-12">
                     <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-                        <a href="#">Canadian Gramavasis</a>.
+                        <a href="#">Canadian Gramavasis</a>
                     </p>
                 </div>
 

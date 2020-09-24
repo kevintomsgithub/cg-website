@@ -1,6 +1,4 @@
-// Scroll to div on click
-$("#faq").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#faq-section").offset().top
-    }, 2000);
+// Collapse Nav bar on click
+$('.navbar-nav>a').on('click', function() {
+    $('.navbar-collapse').collapse('hide');
 });
