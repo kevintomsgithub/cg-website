@@ -10,7 +10,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <script type="text/javascript" src="assets/search_index/documents.js"></script>
+    <script type="text/javascript" src="assets/search_index/inverted_indexing.js"></script>
+    <script type="text/javascript" src="assets/search_index/prefix_hash.js"></script>
     <title>Canadian Gramavasis</title>
 </head>
 
@@ -56,7 +58,15 @@
         <div class="container faq-div" id="faq-section">
             <h3 class="faq-title mb-4">FREQUENTLY ASKED QUESTIONS</h3>
 
-            <div id="accordion">
+            <div class="container" id="search-box-parent">
+                <div class="input-group p-2">
+                    <input type="text" class="form-control" id="search-query" placeholder="Search Keyword" aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off">
+                </div>
+                <ul class="list-group list-group-flush" id="suggestions"></ul>
+                <div class="accordion" id="results"></div>
+            </div>
+
+            <!-- <div id="accordion">
 
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -110,7 +120,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
         </div>
         <!-- FAQ Section ends -->
