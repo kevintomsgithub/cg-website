@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script type="text/javascript" src="assets/search_index/documents.js"></script>
+    <script type="text/javascript" src="assets/search_index/inverted_indexing.js"></script>
+    <script type="text/javascript" src="assets/search_index/prefix_hash.js"></script>
+
+    <title>FAQ Page</title>
+</head>
+
+<style>
+    p {
+        margin-top: 3rem;
+        width: 100%;
+        font-weight: lighter;
+        text-align: center;
+    }
+    
+    b {
+        padding: 0.5px;
+    }
+    
+    .selection {
+        background-color: #e8e8e8;
+    }
+    
+    .accordion {
+        margin-top: 2rem;
+    }
+    
+    .highlighted {
+        background-color: yellow;
+    }
+    
+    #search-box-parent {
+        position: relative;
+        overflow: visible;
+    }
+    
+    #suggestions {
+        position: absolute;
+        left: 0px;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #no-results {
+        margin-top: 3rem;
+        width: 100%;
+        font-weight: lighter;
+        text-align: center;
+    }
+    
+    .content {
+        min-height: calc(100vh - 109px);
+    }
+    
+    .footer {
+        height: 60px;
+    }
+    
+    #search-box-parent {
+        margin-top: 1.5rem;
+    }
+    /* Footer CSS Start */
+    
+    .site-footer {
+        background-color: #26272b;
+        padding: 45px 0 20px;
+        font-size: 15px;
+        line-height: 24px;
+        color: #737373;
+    }
+    
+    .site-footer a {
+        color: #737373;
+    }
+    
+    .site-footer a:hover {
+        color: #3366cc;
+        text-decoration: none;
+    }
+    
+    .site-footer .social-icons {
+        text-align: right
+    }
+    
+    .site-footer .social-icons a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: 6px;
+        margin-right: 0;
+        border-radius: 100%;
+        background-color: #33353d
+    }
+    
+    .copyright-text {
+        margin: 0
+    }
+    
+    @media (max-width:991px) {
+        .site-footer [class^=col-] {
+            margin-bottom: 30px
+        }
+    }
+    
+    @media (max-width:767px) {
+        .site-footer {
+            padding-bottom: 0
+        }
+        .site-footer .copyright-text,
+        .site-footer .social-icons {
+            text-align: center
+        }
+    }
+    
+    .social-icons {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none
+    }
+    
+    .social-icons li {
+        display: inline-block;
+        margin-bottom: 4px
+    }
+    
+    .social-icons li.title {
+        margin-right: 15px;
+        text-transform: uppercase;
+        color: #96a2b2;
+        font-weight: 700;
+        font-size: 13px
+    }
+    
+    .social-icons a {
+        background-color: #eceeef;
+        color: #818a91;
+        font-size: 16px;
+        display: inline-block;
+        line-height: 44px;
+        width: 44px;
+        height: 44px;
+        text-align: center;
+        margin-right: 8px;
+        border-radius: 100%;
+        -webkit-transition: all .2s linear;
+        -o-transition: all .2s linear;
+        transition: all .2s linear
+    }
+    
+    .social-icons a:active,
+    .social-icons a:focus,
+    .social-icons a:hover {
+        color: #fff;
+        background-color: #29aafe
+    }
+    
+    .social-icons.size-sm a {
+        line-height: 34px;
+        height: 34px;
+        width: 34px;
+        font-size: 14px
+    }
+    
+    .social-icons a.facebook:hover {
+        background-color: #3b5998
+    }
+    
+    .social-icons a.twitter:hover {
+        background-color: #00aced
+    }
+    
+    .social-icons a.linkedin:hover {
+        background-color: #007bb6
+    }
+    
+    .social-icons a.dribbble:hover {
+        background-color: #ea4c89
+    }
+    
+    @media (max-width:767px) {
+        .social-icons li.title {
+            display: block;
+            margin-right: 0;
+            font-weight: 600
+        }
+    }
+    /* Footer CSS End */
+    
+    @media (max-width: 769px) {
+        .logo-img {
+            width: 53px;
+            height: 40px;
+        }
+        .logo-name {
+            font-size: 0.7em;
+        }
+        .faq-title {
+            font-size: 1rem;
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.7rem !important;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .logo-img {
+            width: 53px;
+            height: 40px;
+        }
+        .logo-name {
+            font-size: 0.7em;
+        }
+        .faq-title {
+            font-size: 1rem;
+            margin-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        #search-box-parent {
+            margin-top: 1.5rem;
+        }
+        .card-body {
+            font-size: 0.7rem;
+        }
+        .text-left {
+            font-size: 0.7rem !important;
+        }
+        #search-query::placeholder {
+            font-size: 0.7rem !important;
+            font-weight: lighter;
+        }
+        #search-query {
+            font-size: 0.7rem !important;
+        }
+        .list-group-item {
+            font-size: 0.7rem !important;
+        }
+    }
+</style>
+
+<body>
+    <div class="content">
+        <!-- Nav Bar start -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a class="navbar-brand" href="index.html">
+                <img src="./assets/images/cg_logo.png" width="53" height="40" class="d-inline-block align-top logo-img" alt="" loading="lazy"> <span class="logo-name">Canadian Gramavasis</span>
+            </a>
+        </nav>
+        <!-- Nav Bar end -->
+
+        <div class="container">
+            <h1 class="text-center faq-title">Frequently Asked Questions</h1>
+            <div class="container" id="search-box-parent">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search-query" placeholder="Search Keyword" aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off">
+                </div>
+                <ul class="list-group list-group-flush" id="suggestions"></ul>
+                <div class="accordion" id="results"></div>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <div class="accordion" id="all-faq">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+                        <a href="#">Canadian Gramavasis</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="twitter" href="https://www.instagram.com/canadiangramavasis/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a class="youtube" href="https://www.youtube.com/channel/UCaHiQ8Q7Ztchrz7xYBg0Ypg/videos"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+<script>
+    var firstNResults = 10;
+    var resultsId = 0
+    var allResultsId = 0
+
+    function flushSuggestions() {
+        $('#suggestions').empty()
+            // $('#results').empty()
+            // $('#suggestions').hide()
+
+    }
+
+    function flushResults() {
+        $('#results').empty()
+            // $('#suggestions').hide()
+    }
+
+    $('body').click(function(event) {
+        // var suggestionsHeight = $('#suggestions').height()
+        // if (suggestionsHeight > 0) {
+        //     $('#suggestions').height(0)
+        // }
+        flushSuggestions()
+    });
+
+    function fillAllFAQ() {
+        docIndex.forEach(doc => {
+            question = doc['question']
+            answer = doc['answer']
+
+            var result_pair = " \
+                <div class=\"card\"> \
+                    <div class=\"card-header\" id=\"headingOne\"> \
+                        <h2 class=\"mb-0\">  \
+                            <button class=\"btn btn-link btn-block text-left\" id=\"allQstId-" + allResultsId + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#allResults-" + allResultsId + "\" aria-expanded=\"true\" aria-controls=\"collapseOne\"></button> \
+                        </h2> \
+                    </div> \
+                    <div id=\"allResults-" + allResultsId + "\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#results\"> \
+                        <div id=\"allAnsId-" + allResultsId + "\" class=\"card-body\"></div> \
+                </div> \
+                "
+            $('#all-faq').append(result_pair)
+            $('#allQstId-' + allResultsId).html(question)
+            $('#allAnsId-' + allResultsId).html(answer)
+            allResultsId += 1
+        });
+    }
+
+    window.onload = fillAllFAQ();
+
+    function createSearchResults(documentReferences, completeKeywords) {
+
+        $('#suggestions').height(0)
+
+        documentReferences.forEach(index => {
+
+            question = docIndex[index]['question']
+            answer = docIndex[index]['answer']
+
+            completeKeywords.forEach(query => {
+                question = question.replaceAll(' ' + query + ' ', ' ' + '<span class=\"highlighted\">' + query + '</span>' + ' ')
+                answer = answer.replaceAll(' ' + query + ' ', ' ' + '<span class=\"highlighted\">' + query + '</span>' + ' ')
+            });
+
+            var result_pair = " \
+                <div class=\"card\"> \
+                    <div class=\"card-header\" id=\"headingOne\"> \
+                        <h2 class=\"mb-0\">  \
+                            <button class=\"btn btn-link btn-block text-left\" id=\"qstId-" + resultsId + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#result-" + resultsId + "\" aria-expanded=\"true\" aria-controls=\"collapseOne\"></button> \
+                        </h2> \
+                    </div> \
+                    <div id=\"result-" + resultsId + "\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#results\"> \
+                        <div id=\"ansId-" + resultsId + "\" class=\"card-body\"></div> \
+                </div> \
+                "
+            $('#results').append(result_pair)
+            $('#qstId-' + resultsId).html(question)
+            $('#ansId-' + resultsId).html(answer)
+            resultsId += 1
+
+            console.log(result_pair)
+        });
+    }
+
+    function fillSearchWithSuggestion(completeKeywords) {
+
+        completeKeywords = completeKeywords.split(',')
+        var completeQuery = completeKeywords.join(' ')
+
+        var documentResultSet = []
+
+        $('#search-query').val(completeQuery)
+        flushSuggestions()
+        flushResults()
+
+        var resultsFlag = false;
+
+        completeKeywords.forEach(query => {
+            if (invertedIndex.hasOwnProperty(query)) {
+                documentResultSet = documentResultSet.concat(invertedIndex[query].doc)
+                resultsFlag = true
+            }
+        });
+
+        let documentResultArray = Array.from(new Set(documentResultSet));
+
+        createSearchResults(documentResultArray, completeKeywords)
+
+        if (resultsFlag == false) {
+            flushResults()
+            $('#results').append("<p id='no-results'> No results found :( </p>")
+        }
+    }
+
+    function populateSuggestions(incompleteQuery, lastKeyword, completeKeywords) {
+        results = data[lastKeyword].slice(0, firstNResults)
+        results.forEach(result => {
+            var suggestionString = ('<b>' + incompleteQuery + '</b>' + ' ' + result.replace(lastKeyword, '<b>' + lastKeyword + '</b>'))
+            var args = completeKeywords.concat(result)
+            $('#suggestions').append("<li class='list-group-item' onclick=\"fillSearchWithSuggestion('" + args + "')\">" + suggestionString + "</li>")
+        });
+    }
+
+    $('#search-query').keyup(function(e) {
+        if (e.keyCode != 40 && e.keyCode != 38) {
+
+            var query = $('#search-query').val().toLowerCase()
+            query = query.replace(/\s+/g, ' ').trim()
+            var completeKeywords = query.split(' ').slice(0, -1)
+
+            // Enter code
+            if (e.keyCode == 13) {
+
+                var queryText = $('#search-query').val()
+
+                if ($('li').length == 1) {
+                    queryText = $('li').text()
+                    $('#search-query').val(queryText)
+                    $('li').click()
+                    return
+                }
+                if ($('li.selection').length != 0) {
+                    queryText = $('li.selection').text()
+                    $('#search-query').val(queryText)
+                    $('li.selection').click()
+                    return
+                }
+                fillSearchWithSuggestion(query.split(' ').join(','))
+            } else {
+                // Tab code
+                if (e.keyCode == 9) {
+                    e.preventDefault();
+                    return
+                }
+                // Flush the elements in the results
+                flushSuggestions()
+
+                var lastKeyword = query.split(' ').slice(-1)[0]
+                var incompleteQuery = query.split(' ').slice(0, -1).join(' ')
+
+                // Space code
+                if (e.keyCode == 32) {
+                    populateSuggestions(query, 'a', completeKeywords)
+                    return
+                }
+                // Populate the results if key found
+                if (data.hasOwnProperty(lastKeyword)) {
+                    populateSuggestions(incompleteQuery, lastKeyword, completeKeywords)
+                        // $('#suggestions').fadeIn(100)
+                } else if (query) {
+                    flushResults()
+                        // $('#results').append("<p id='no-results'> No results found :( </p>")
+                        // $('#suggestions').fadeIn(100)
+                }
+            }
+        }
+    });
+
+    // Arrow keys heighlight
+    $(document).keydown(function(e) {
+        var $hlight = $('li.selection'),
+            $div = $('li');
+        if (e.keyCode == 40) {
+            // Move Down
+            $hlight.removeClass('selection').next().addClass('selection');
+            if ($hlight.next().length == 0) {
+                $div.eq(0).addClass('selection')
+            }
+            $('#search-query').val($('li.selection').text() + ' ')
+        } else if (e.keyCode === 38) {
+            // Move Up
+            $hlight.removeClass('selection').prev().addClass('selection');
+            if ($hlight.prev().length == 0) {
+                $div.eq(-1).addClass('selection')
+            }
+            $('#search-query').val($('li.selection').text() + ' ')
+        }
+        // Tab code
+        if (e.keyCode == 9) {
+            e.preventDefault();
+            var query = $('#search-query').val()
+            var completeKeywords = query.split(' ').slice(0, -1)
+
+            var firstSuggestion = $('li').first().text() + ' '
+            $('#search-query').val(firstSuggestion)
+            flushSuggestions()
+            populateSuggestions(firstSuggestion, 'a', completeKeywords)
+            return
+        }
+    })
+</script>
+
+</html>

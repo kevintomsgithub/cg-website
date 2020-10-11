@@ -8,6 +8,7 @@ var resultsId = 0
 
 function flushSuggestions() {
     $('#suggestions').empty()
+        // $('#results').empty()
         // $('#suggestions').hide()
 
 }
@@ -16,6 +17,10 @@ function flushResults() {
     $('#results').empty()
         // $('#suggestions').hide()
 }
+
+$('body').click(function(event) {
+    flushSuggestions()
+});
 
 function createSearchResults(documentReferences, completeKeywords) {
 
@@ -49,6 +54,15 @@ function createSearchResults(documentReferences, completeKeywords) {
     });
 }
 
+function populateSuggestions(incompleteQuery, lastKeyword, completeKeywords) {
+    results = data[lastKeyword].slice(0, firstNResults)
+    results.forEach(result => {
+        var suggestionString = ('<b>' + incompleteQuery + '</b>' + ' ' + result.replace(lastKeyword, '<b>' + lastKeyword + '</b>'))
+        var args = completeKeywords.concat(result)
+        $('#suggestions').append("<li class='list-group-item' onclick=\"fillSearchWithSuggestion('" + args + "')\">" + suggestionString + "</li>")
+    });
+}
+
 function fillSearchWithSuggestion(completeKeywords) {
 
     completeKeywords = completeKeywords.split(',')
@@ -75,23 +89,14 @@ function fillSearchWithSuggestion(completeKeywords) {
 
     if (resultsFlag == false) {
         flushResults()
-        $('#suggestions').append("<p id='no-results'> No results found :( </p>")
+        $('#results').append("<p id='no-results'> No results found :( </p>")
     }
-}
-
-function populateSuggestions(incompleteQuery, lastKeyword, completeKeywords) {
-    results = data[lastKeyword].slice(0, firstNResults)
-    results.forEach(result => {
-        var suggestionString = ('<b>' + incompleteQuery + '</b>' + ' ' + result.replace(lastKeyword, '<b>' + lastKeyword + '</b>'))
-        var args = completeKeywords.concat(result)
-        $('#suggestions').append("<li class='list-group-item' onclick=\"fillSearchWithSuggestion('" + args + "')\">" + suggestionString + "</li>")
-    });
 }
 
 $('#search-query').keyup(function(e) {
     if (e.keyCode != 40 && e.keyCode != 38) {
 
-        var query = $('#search-query').val()
+        var query = $('#search-query').val().toLowerCase()
         query = query.replace(/\s+/g, ' ').trim()
         var completeKeywords = query.split(' ').slice(0, -1)
 
@@ -135,9 +140,10 @@ $('#search-query').keyup(function(e) {
                 populateSuggestions(incompleteQuery, lastKeyword, completeKeywords)
                     // $('#suggestions').fadeIn(100)
             } else if (query) {
-                flushResults()
-                $('#suggestions').append("<p id='no-results'> No results found :( </p>")
-                    // $('#suggestions').fadeIn(100)
+                // flushResults()
+                // $('#suggestions').append("<p id='no-results'> No results found :( </p>")
+                // $('#results').append("<p id='no-results'> No results found :( </p>")
+                // $('#suggestions').fadeIn(100)
             }
         }
     }

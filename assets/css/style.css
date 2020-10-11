@@ -65,6 +65,11 @@ html {
     font-weight: lighter;
 }
 
+.text-lighter {
+    font-weight: lighter;
+    color: black;
+}
+
 
 /* Search Box CSS start */
 
@@ -317,6 +322,22 @@ b {
         font-weight: lighter;
         font-size: 0.7rem;
         padding: 1rem;
+    }
+    .card-body {
+        font-size: 0.7rem;
+    }
+    .text-left {
+        font-size: 0.7rem !important;
+    }
+    #search-query::placeholder {
+        font-size: 0.7rem !important;
+        font-weight: lighter;
+    }
+    #search-query {
+        font-size: 0.7rem !important;
+    }
+    .list-group-item {
+        font-size: 0.7rem !important;
     }
 }
 
