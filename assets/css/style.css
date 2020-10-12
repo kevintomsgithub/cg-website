@@ -35,7 +35,8 @@ html {
 .about-box {
     margin-top: 1.5rem;
     background-color: #dddddd !important;
-    padding: 1.5rem;
+    padding: 2rem;
+    text-align: center;
 }
 
 .faq-div {
@@ -66,8 +67,28 @@ html {
 }
 
 .text-lighter {
-    font-weight: lighter;
+    font-weight: lighter !important;
     color: black;
+}
+
+.all-faq-text {
+    margin-top: 1.5rem;
+}
+
+.follow-us {
+    padding-bottom: 4rem;
+}
+
+.social-media-text {
+    margin-top: 10px
+}
+
+.name-div {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
 }
 
 
@@ -338,6 +359,17 @@ b {
     }
     .list-group-item {
         font-size: 0.7rem !important;
+    }
+    .social-media-text {
+        font-size: 0.7rem;
+        margin-top: 10px
+    }
+    .follow-us {
+        padding-bottom: 2rem;
+    }
+    .name-div {
+        margin-top: 1.5rem;
+        font-size: 15px;
     }
 }
 

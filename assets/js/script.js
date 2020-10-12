@@ -15,6 +15,7 @@ function flushSuggestions() {
 
 function flushResults() {
     $('#results').empty()
+    $('#accordion').hide()
         // $('#suggestions').hide()
 }
 
